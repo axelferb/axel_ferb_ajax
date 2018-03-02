@@ -22,7 +22,7 @@ function loopLaunchData(launchData) {
 
         if (launchData[i].details === null) {
             launchData[i].details = "No extra information avalible.";
-        };
+        }
 
         if (launchData[i].launch_success === true) {
             launchData[i].launch_success = "Yes";
@@ -30,7 +30,7 @@ function loopLaunchData(launchData) {
 
         else if (launchData[i].launch_success === false) {
             launchData[i].launch_success = "No";
-        };
+        }
 
         data.innerHTML +=
             `
@@ -51,4 +51,11 @@ const orderDesc = document.getElementById("DESC");
 orderDesc.addEventListener("click", function () {
     const descending = "order=desc";
     getLaunches(descending);
+});
+
+// Code for scrolling to the nav and information //
+scrollButton = document.getElementById("scrollToStart");
+
+scrollButton.addEventListener("click", function () {
+    document.getElementById("nav").scrollIntoView();
 });

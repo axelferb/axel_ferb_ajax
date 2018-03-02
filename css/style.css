@@ -8,6 +8,8 @@ nav {
     border: 1px solid black;
     background-color: black;
     height: 70px;
+    display: flex;
+    align-items: center;
 }
 /**/
 
@@ -32,6 +34,36 @@ header h2, h3 {
     color: #fff;
     font-family: 'Josefin Sans', sans-serif;
 }
+
+.textAnimation {
+	-webkit-animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+    0% {
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes text-focus-in {
+    0% {
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
 /**/
 
 /* Button Styling */
@@ -43,6 +75,20 @@ header h2, h3 {
     background: rgba(255, 255, 255, 0);
     padding: 15px;
     text-transform: uppercase;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#scrollToStart:hover {
+    border: 3px solid #DB3F3D;
+    font-size: 1.1em;
+}
+
+#scrollToStart:focus {
+    outline: 0;
 }
 /**/
 
@@ -50,16 +96,16 @@ header h2, h3 {
 #mars {
     position: relative;
     transform: rotate(-25deg);
-    height: 450px;
-    width: 450px;
+    height: 50%;
+    width: 50%;
 }
 
 #earth {
     position: absolute;
     transform: rotate(-23deg);
     top: 150px;
-    height: 100px;
-    width: 100px;
+    height: 15%;
+    width: 15%;
 }
 
 #data {
