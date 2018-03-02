@@ -2,15 +2,18 @@ body {
     margin: 0px auto;
 }
 
+/* Nav styling */
 nav {
     box-sizing: border-box;
     border: 1px solid black;
     background-color: black;
     height: 70px;
 }
+/**/
 
+/* Header stylings */
 header {
-    height: calc(100vh - 370px);
+    height: calc(100vh - 300px);
     background: linear-gradient(#222222d3, #222222d3),
     url("/images/nature-night-sky-milky-way-810890.jpeg");
     padding: 150px 0px 150px 0px;  
@@ -25,19 +28,35 @@ header h1 {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-header h2 {
+header h2, h3 {
     color: #fff;
     font-family: 'Josefin Sans', sans-serif;
 }
+/**/
 
+/* Button Styling */
+#scrollToStart {
+    border-radius: 3rem;
+    cursor: pointer;
+    border: 3px solid #FF4F19;
+    /* background-image: linear-gradient(to top, #FF4F19, #DB3F3D); */
+    background: rgba(255, 255, 255, 0);
+    padding: 15px;
+    text-transform: uppercase;
+}
+/**/
+
+/* Planetstyling */
 #mars {
     position: relative;
+    transform: rotate(-25deg);
     height: 450px;
     width: 450px;
 }
 
 #earth {
     position: absolute;
+    transform: rotate(-23deg);
     top: 150px;
     height: 100px;
     width: 100px;
@@ -47,9 +66,5 @@ header h2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 20px;
-    /* padding: 15px 15px 15px 15px; */
 }
-
-/* .box {
-    
-} */
+/**/

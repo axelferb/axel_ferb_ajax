@@ -1,5 +1,6 @@
-function getLaunches(launches) {
-    fetch('https://api.spacexdata.com/v2/launches/')
+// Fetches all the data in the API aswell as running the functions needed to write them out //
+function getLaunches(launches = "order=asc") {
+    fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
         .then(function (response) {
             return response.json();
         })
@@ -13,11 +14,14 @@ function getLaunches(launches) {
 };
 getLaunches();
 
+// Looping out all the launches //
 function loopLaunchData(launchData) {
+    // Defines innerHTML as empty at first, then fills it with the information provided, otherwise it would att the innerHTML for all the filters you press //
+    data.innerHTML = "";
     for (var i = 0; i < launchData.length; i++) {
 
         if (launchData[i].details === null) {
-            launchData[i].details = "No extra information avalible";
+            launchData[i].details = "No extra information avalible.";
         };
 
         if (launchData[i].launch_success === true) {
@@ -31,6 +35,7 @@ function loopLaunchData(launchData) {
         data.innerHTML +=
             `
         <div class="box">
+        <p>Launch No: ${launchData[i].flight_number}</p>
         <p>Launch year: ${launchData[i].launch_year}</p>
         <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
         <p>Launch successful: ${launchData[i].launch_success}</p>
@@ -39,3 +44,11 @@ function loopLaunchData(launchData) {
         `;
     }
 }
+
+// Different filteroptions //
+const orderDesc = document.getElementById("DESC");
+
+orderDesc.addEventListener("click", function () {
+    const descending = "order=desc";
+    getLaunches(descending);
+});
