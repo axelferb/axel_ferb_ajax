@@ -1,5 +1,12 @@
+// Cons's
+const orderDesc = document.getElementById("DESC");
+const orderAsc = document.getElementById("ASC");
+const orderRockFalc1 = document.getElementById("falc1");
+const orderRockFalc9 = document.getElementById("falc9");
+const orderRockFalcHvy = document.getElementById("falchvy");
+
 // Fetches all the data in the API aswell as running the functions needed to write them out //
-function getLaunches(launches = "order=asc") {
+function getLaunches(launches = "") {
     fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
         .then(function (response) {
             return response.json();
@@ -31,12 +38,13 @@ function loopLaunchData(launchData) {
         else if (launchData[i].launch_success === false) {
             launchData[i].launch_success = "No";
         }
-
+        // What data/information is being typed out in innerHTML
         data.innerHTML +=
             `
         <div class="box">
         <p>Launch No: ${launchData[i].flight_number}</p>
         <p>Launch year: ${launchData[i].launch_year}</p>
+        <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
         <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
         <p>Launch successful: ${launchData[i].launch_success}</p>
         <p>${launchData[i].details}</p>
@@ -46,13 +54,46 @@ function loopLaunchData(launchData) {
 }
 
 // Different filteroptions //
-const orderDesc = document.getElementById("DESC");
 
+// Filter by Descending //
 orderDesc.addEventListener("click", function () {
-    const descending = "order=desc";
-    getLaunches(descending);
+    if (orderDesc.checked) {
+        const descending = "order=desc&";
+        //orderAsc.disabled = true;
+        // orderDesc.disabled = false;
+        orderAsc.checked = !orderAsc.checked;
+        getLaunches(descending);
+    };
 });
 
+// Filter by Ascending //
+orderAsc.addEventListener("click", function () {
+    if (orderAsc.checked) {
+        const ascending = "order=asc&";
+        // orderAsc.disabled = false;
+        orderDesc.checked = !orderDesc.checked;
+        getLaunches(ascending);
+    };
+});
+
+// Filter by rocket falcon 1 //
+orderRockFalc1.addEventListener("click", function () {
+    const rocketfalc1 = "rocket_id=falcon1&"
+    getLaunches(rocketfalc1);
+});
+
+// Filter by rocket falcon 9 //
+orderRockFalc9.addEventListener("click", function () {
+    const rocketfalc9 = "rocket_id=falcon9&"
+    getLaunches(rocketfalc9);
+});
+
+// Filter by rocket falcon heavy //
+orderRockFalcHvy.addEventListener("click", function () {
+    const rocketfalchvy = "rocket_id=falconheavy&"
+    getLaunches(rocketfalchvy);
+});
+// End of filteroptions //
 // Code for scrolling to the nav and information //
 scrollButton = document.getElementById("scrollToStart");
 

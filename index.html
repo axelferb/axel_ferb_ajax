@@ -14,8 +14,8 @@
 
 <body>
     <header>
-        <img id="mars" src="/images/mars.svg" alt="Mars">
-        <img id="earth" src="/images/planet-earth.svg" alt="Earth">
+        <!-- <img id="mars" src="/images/mars.svg" alt="Mars">
+        <img id="earth" src="/images/planet-earth.svg" alt="Earth"> -->
         <br>
         <div class="headertext">
             <h1 class="textAnimation">
@@ -25,14 +25,19 @@
                 A page made for my second js assignment using API's!
             </h2>
         </div>
-        <div class="buttondiv">
-            <button class="textAnimation" id="scrollToStart">
-                Click here to start looking
-            </button>
-        </div>
+        <button class="textAnimation" id="scrollToStart">
+            Click here to start looking
+        </button>
     </header>
     <nav id="nav">
-        <button id="DESC">Order by Descending</button>
+        <label for="DESC">Order by latest launch</label>
+        <input name="DESC" type="checkbox" id="DESC"></input>
+        <label for="ASC">Order by oldest launch</label>
+        <input name="ASC" type="checkbox" id="ASC"></input>
+        <label for="falc1">Filter by launch rocket Falcon 1</label>
+        <input name="falc1" type="checkbox" id="falc1"></input>
+        <button id="falc9">Filter by launch rocket Falcon 9</button>
+        <button id="falchvy">Filter by launch rocket Falcon Heavy</button>
     </nav>
     <div id="data">
 
