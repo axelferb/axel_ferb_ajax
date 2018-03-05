@@ -21,7 +21,7 @@ function loopLaunchData(launchData) {
     for (var i = 0; i < launchData.length; i++) {
 
         if (launchData[i].details === null) {
-            launchData[i].details = "No extra information avalible.";
+            launchData[i].details = "No extra information about this launch avalible.";
         }
 
         if (launchData[i].launch_success === true) {
