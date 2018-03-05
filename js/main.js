@@ -28,7 +28,7 @@ function loopLaunchData(launchData) {
     for (var i = 0; i < launchData.length; i++) {
 
         if (launchData[i].details === null) {
-            launchData[i].details = "No extra information about this launch avalible.";
+            launchData[i].details = "No extra information avalible about this launch.";
         }
 
         if (launchData[i].launch_success === true) {
@@ -59,9 +59,7 @@ function loopLaunchData(launchData) {
 orderDesc.addEventListener("click", function () {
     if (orderDesc.checked) {
         const descending = "order=desc&";
-        //orderAsc.disabled = true;
-        // orderDesc.disabled = false;
-        orderAsc.checked = !orderAsc.checked;
+        orderAsc.checked = !orderDesc.checked;
         getLaunches(descending);
     };
 });
@@ -70,8 +68,7 @@ orderDesc.addEventListener("click", function () {
 orderAsc.addEventListener("click", function () {
     if (orderAsc.checked) {
         const ascending = "order=asc&";
-        // orderAsc.disabled = false;
-        orderDesc.checked = !orderDesc.checked;
+        orderDesc.checked = !orderAsc.checked;
         getLaunches(ascending);
     };
 });
@@ -94,6 +91,7 @@ orderRockFalcHvy.addEventListener("click", function () {
     getLaunches(rocketfalchvy);
 });
 // End of filteroptions //
+
 // Code for scrolling to the nav and information //
 scrollButton = document.getElementById("scrollToStart");
 

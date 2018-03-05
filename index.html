@@ -30,23 +30,31 @@
         </button>
     </header>
     <nav id="nav">
-        <label for="DESC">Order by latest launch</label>
-        <input name="DESC" type="checkbox" id="DESC"></input>
-        <label for="ASC">Order by oldest launch</label>
-        <input name="ASC" type="checkbox" id="ASC"></input>
-        <label for="falc1">Filter by launch rocket Falcon 1</label>
-        <input name="falc1" type="checkbox" id="falc1"></input>
-        <button id="falc9">Filter by launch rocket Falcon 9</button>
-        <button id="falchvy">Filter by launch rocket Falcon Heavy</button>
     </nav>
+    <div class="filteroptions">
+        <div class="filterbox">
+            <label for="DESC">Order by latest launch</label>
+            <input name="DESC" type="checkbox" id="DESC"></input>
+            <label for="ASC">Order by oldest launch</label>
+            <input name="ASC" type="checkbox" id="ASC"></input>
+        </div>
+        <div class="filterbox">
+            <button id="falc1">Filter by launch rocket Falcon 1</button>
+            <button id="falc9">Filter by launch rocket Falcon 9</button>
+            <button id="falchvy">Filter by launch rocket Falcon Heavy</button>
+        </div>
+    </div>
     <div id="data">
 
     </div>
     <script src="js/main.js"></script>
-    <div>Icons made by
-        <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
-        <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
-        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    <div style="display:flex; align-items:center; justify-content:center;">
+        <p>
+            Icons made by
+            <a href="http://www.freepik.com" title="Freepik"> Freepik </a> from
+            <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a> is licensed by
+            <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"> CC 3.0 BY </a>
+        </p>
     </div>
 </body>
 

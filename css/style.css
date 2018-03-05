@@ -125,27 +125,30 @@ header h2 {
     width: 12%;
 }
 
+/**/
 #data {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 20px;
 }
-/**/
+
+.filteroptions {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 20px;
+}
+
+.filterbox {
+    padding: 20px;
+}
 
 .box {
     box-sizing: border-box;
     border: 3px solid white;
+    padding: 5px;
 
 }
 
 label {
     color: white;
-}
-
-#DESC:active {
-    
-}
-
-#ASC:active {
-    
 }
