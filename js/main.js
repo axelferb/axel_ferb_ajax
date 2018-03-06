@@ -5,14 +5,16 @@ const orderRockFalc1 = document.getElementById("falc1");
 const orderRockFalc9 = document.getElementById("falc9");
 const orderRockFalcHvy = document.getElementById("falchvy");
 const orderAllRock = document.getElementById("all");
+let globalLaunchData = [];
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
-function getLaunches(launches = "") {
+function getLaunches(launches, order) {
     fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (launchData) {
+            globalLaunchData = launchData;
             console.log(launchData);
             loopLaunchData(launchData);
         })
@@ -20,7 +22,7 @@ function getLaunches(launches = "") {
             console.log(error);
         })
 };
-getLaunches();
+
 
 // Looping out all the launches //
 function loopLaunchData(launchData) {
@@ -43,7 +45,7 @@ function loopLaunchData(launchData) {
         // What data/information is being typed out in innerHTML
         data.innerHTML +=
             `
-        <div class="box">
+        <div class="box" id="${launchData[i].launch_date_unix}">
         <p>Launch No: ${launchData[i].flight_number}</p>
         <p>Launch year: ${launchData[i].launch_year}</p>
         <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
@@ -52,6 +54,20 @@ function loopLaunchData(launchData) {
         <p>${launchData[i].details}</p>
         </div>
         `;
+        // Adds eventlistner to all boxes containing the info
+        const infoBoxes = document.getElementsByClassName("box");
+        for (let infoBox of infoBoxes) {
+            infoBox.addEventListener("click", function () {
+                for (var i = 0; i < globalLaunchData.length; i++) {
+                    if (this.id == globalLaunchData[i].launch_date_unix) {
+                        console.log(this.id);
+                    }
+                    else {
+                        console.log("Fan");
+                    }
+                }
+            });
+        }
     }
 }
 
@@ -65,6 +81,8 @@ orderDesc.addEventListener("click", function () {
         getLaunches(descending);
     };
 });
+
+const competition = "sec"
 
 // Filter by Ascending //
 orderAsc.addEventListener("click", function () {
@@ -105,10 +123,5 @@ scrollButton = document.getElementById("scrollToStart");
 scrollButton.addEventListener("click", function () {
     document.getElementById("nav").scrollIntoView();
 });
-
-// Clicking a specific launch and getting extra information
-const infoBoxes = document.getElementsByClassName("box");
-infoBoxes.addEventListener("click", function () {
-    console.log("hej!");
-});
-
+//
+getLaunches();

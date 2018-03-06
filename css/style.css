@@ -14,11 +14,11 @@ nav {
 
 /* Header stylings */
 header {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 50px);
     background: linear-gradient(#222222e0, #222222e0),
     url("/images/starry-sky-1654074_1280.jpg");
     /*padding: 100px 0px 150px 0px;*/ 
-    padding-top: 100px; 
+    padding-top: 50px; 
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -114,8 +114,8 @@ header h2 {
 #mars {
     position: relative;
     transform: rotate(-25deg);
-    height: 30%;
-    width: 30%;
+    height: 30vh;
+    width: auto;
 }
 
 #earth {
