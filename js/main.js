@@ -4,6 +4,7 @@ const orderAsc = document.getElementById("ASC");
 const orderRockFalc1 = document.getElementById("falc1");
 const orderRockFalc9 = document.getElementById("falc9");
 const orderRockFalcHvy = document.getElementById("falchvy");
+const orderAllRock = document.getElementById("all");
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
 function getLaunches(launches = "") {
@@ -25,6 +26,7 @@ getLaunches();
 function loopLaunchData(launchData) {
     // Defines innerHTML as empty at first, then fills it with the information provided, otherwise it would att the innerHTML for all the filters you press //
     data.innerHTML = "";
+    // Code for replacing returnvalues of null/true/false with actual text
     for (var i = 0; i < launchData.length; i++) {
 
         if (launchData[i].details === null) {
@@ -89,6 +91,11 @@ orderRockFalc9.addEventListener("click", function () {
 orderRockFalcHvy.addEventListener("click", function () {
     const rocketfalchvy = "rocket_id=falconheavy&"
     getLaunches(rocketfalchvy);
+});
+// Filter by all rockets //
+orderAllRock.addEventListener("click", function () {
+    const allRock = "rocket_id=&"
+    getLaunches(allRock);
 });
 // End of filteroptions //
 
