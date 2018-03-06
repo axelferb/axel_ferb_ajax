@@ -50,7 +50,7 @@ function loopLaunchData(launchData) {
         <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
         <p>Launch successful: ${launchData[i].launch_success}</p>
         <p>${launchData[i].details}</p>
-        </div >
+        </div>
         `;
     }
 }
@@ -105,3 +105,10 @@ scrollButton = document.getElementById("scrollToStart");
 scrollButton.addEventListener("click", function () {
     document.getElementById("nav").scrollIntoView();
 });
+
+// Clicking a specific launch and getting extra information
+const infoBoxes = document.getElementsByClassName("box");
+infoBoxes.addEventListener("click", function () {
+    console.log("hej!");
+});
+
