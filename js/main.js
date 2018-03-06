@@ -60,7 +60,7 @@ function loopLaunchData(launchData) {
             infoBox.addEventListener("click", function () {
                 for (var i = 0; i < globalLaunchData.length; i++) {
                     if (this.id == globalLaunchData[i].launch_date_unix) {
-                        console.log(this.id);
+                        this.innerHTML = this.id;
                     }
                     else {
                         console.log("Fan");
