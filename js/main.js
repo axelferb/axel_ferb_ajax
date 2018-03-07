@@ -47,11 +47,13 @@ function loopLaunchData(launchData) {
         data.innerHTML +=
             `
         <div class="box" id="${launchData[i].flight_number}">
-        <p>Launch No: ${launchData[i].flight_number}</p>
-        <p>Launch year: ${launchData[i].launch_year}</p>
-        <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
-        <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
-        <p>Launch successful: ${launchData[i].launch_success}</p>
+        <ul>
+        <li>Flight number: ${launchData[i].flight_number}</li>
+        <li>Launch year: ${launchData[i].launch_year}</li>
+        <li>Rocket type: ${launchData[i].rocket.rocket_name}</li>
+        <li>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</li>
+        <li>Launch successful: ${launchData[i].launch_success}</li>
+        </ul>
         <p>${launchData[i].details}</p>
         </div>
         `;
@@ -62,16 +64,24 @@ function loopLaunchData(launchData) {
                 for (var i = 0; i < globalLaunchData.length; i++) {
                     //Replaces part of the string with /embed/ to make YT video work with iframe
                     var embedVid = launchData[i].links.video_link.replace("/watch?v=", "/embed/");
+                    if (launchData[i].rocket.second_stage.payloads[0].payload_mass_kg === null) {
+                        launchData[i].rocket.second_stage.payloads[0].payload_mass_kg = "No information about the weight avalible.";
+                    }
                     if (this.id == globalLaunchData[i].flight_number) {
                         data.innerHTML =
                             `
-                            <div class="bigbox">
-                            <p>Launch No: ${launchData[i].flight_number}</p>
-                            <p>Launch year: ${launchData[i].launch_year}</p>
-                            <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
-                            <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
-                            <p>Launch successful: ${launchData[i].launch_success}</p>
-                            <p>Launchsite: ${launchData[i].launch_site.site_name_long}</p>
+                            <div id="bigbox" class="bigbox">
+                            <ul>
+                            <li>Flight number: ${launchData[i].flight_number}</li>
+                            <li>Date and time for launch (UTC): ${launchData[i].launch_date_utc}</li>
+                            <li>Rocket type: ${launchData[i].rocket.rocket_name}</li>
+                            <li>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</li>
+                            <li>Payload name: ${launchData[i].rocket.second_stage.payloads[0].payload_id}</li>
+                            <li>Payload weight (kg): ${launchData[i].rocket.second_stage.payloads[0].payload_mass_kg}</li>
+                            <li>Payload destination: ${launchData[i].rocket.second_stage.payloads[0].orbit}</li>
+                            <li>Launch successful: ${launchData[i].launch_success}</li>
+                            <li>Launchsite: ${launchData[i].launch_site.site_name_long}</li>
+                            </ul>
                             <p>${launchData[i].details}</p>
                             <iframe width="420" height="345" src="${embedVid}"></iframe>
                             <button id="returnToMain">Return to main page</button>
