@@ -5,6 +5,7 @@ const orderRockFalc1 = document.getElementById("falc1");
 const orderRockFalc9 = document.getElementById("falc9");
 const orderRockFalcHvy = document.getElementById("falchvy");
 const orderAllRock = document.getElementById("all");
+const returnToMain = document.getElementById("returnToMain");
 let globalLaunchData = [];
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
@@ -45,7 +46,7 @@ function loopLaunchData(launchData) {
         // What data/information is being typed out in innerHTML
         data.innerHTML +=
             `
-        <div class="box" id="${launchData[i].launch_date_unix}">
+        <div class="box" id="${launchData[i].flight_number}">
         <p>Launch No: ${launchData[i].flight_number}</p>
         <p>Launch year: ${launchData[i].launch_year}</p>
         <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
@@ -54,13 +55,28 @@ function loopLaunchData(launchData) {
         <p>${launchData[i].details}</p>
         </div>
         `;
-        // Adds eventlistner to all boxes containing the info
+        // Adds eventlistner to all boxes containing the info aswell as all the innerHTML that replaces the old one to write more information
         const infoBoxes = document.getElementsByClassName("box");
         for (let infoBox of infoBoxes) {
             infoBox.addEventListener("click", function () {
                 for (var i = 0; i < globalLaunchData.length; i++) {
-                    if (this.id == globalLaunchData[i].launch_date_unix) {
-                        this.innerHTML = this.id;
+                    //Replaces part of the string with /embed/ to make YT video work with iframe
+                    var embedVid = launchData[i].links.video_link.replace("/watch?v=", "/embed/");
+                    if (this.id == globalLaunchData[i].flight_number) {
+                        data.innerHTML =
+                            `
+                            <div class="bigbox">
+                            <p>Launch No: ${launchData[i].flight_number}</p>
+                            <p>Launch year: ${launchData[i].launch_year}</p>
+                            <p>Rocket type: ${launchData[i].rocket.rocket_name}</p>
+                            <p>Payload type: ${launchData[i].rocket.second_stage.payloads[0].payload_type}</p>
+                            <p>Launch successful: ${launchData[i].launch_success}</p>
+                            <p>Launchsite: ${launchData[i].launch_site.site_name_long}</p>
+                            <p>${launchData[i].details}</p>
+                            <iframe width="420" height="345" src="${embedVid}"></iframe>
+                            <button id="returnToMain">Return to main page</button>
+                            </div>
+                    `
                     }
                     else {
                         console.log("Fan");
@@ -81,8 +97,6 @@ orderDesc.addEventListener("click", function () {
         getLaunches(descending);
     };
 });
-
-const competition = "sec"
 
 // Filter by Ascending //
 orderAsc.addEventListener("click", function () {
@@ -121,7 +135,8 @@ orderAllRock.addEventListener("click", function () {
 scrollButton = document.getElementById("scrollToStart");
 
 scrollButton.addEventListener("click", function () {
-    document.getElementById("nav").scrollIntoView();
+    document.getElementById("filters").scrollIntoView();
 });
 //
+
 getLaunches();
