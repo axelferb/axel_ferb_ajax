@@ -122,12 +122,13 @@ header {
     border: 3px solid black;
     padding: 5px;
     color: black;
+    position: relative;
 }
 
 .box:hover {
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow:inset 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow:inset 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow:inset 0px 0px 15px 0px rgba(0,0,0,0.75);
     transition: all 0.5s ease 0s;
     cursor: pointer;
 }
@@ -170,6 +171,21 @@ p, li, label, button  {
 }
 /**/
 
+.bottom {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-right: 1em;
+    background-color: #cc3939;
+    color: white;
+    padding: 3px;
+}
+
+.vidPlayer {
+    width: 420px; 
+    height: 345px;
+}
+
 @media screen and (max-width: 768px) {
     #data {
         display: grid;
@@ -177,6 +193,15 @@ p, li, label, button  {
         padding: 10px;
         grid-row-gap: 10px;
         grid-column-gap: 10px;
+    }
+
+    .bigbox {
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        border: 3px solid black;
+        padding: 5px;
+        color: black;
     }
 }
 
@@ -194,5 +219,19 @@ p, li, label, button  {
         grid-template-columns: repeat(1, 1fr);
         padding: 20px;
         grid-column-gap: 5px;
+    }
+
+    .vidPlayer {
+        width: 100%; 
+        height: auto;
+    }
+
+    .bigbox {
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        border: 3px solid black;
+        padding: 5px;
+        color: black;
     }
 }
