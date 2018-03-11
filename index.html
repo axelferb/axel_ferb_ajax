@@ -6,39 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Home</title>
 </head>
 
 <body>
     <header>
-        <img id="mars" src="/images/mars.svg" alt="Mars">
-        <img id="earth" src="/images/planet-earth.svg" alt="Earth">
+        <img id="mars" src="images/mars.svg" alt="Mars">
+        <!-- <img id="earth" src="/images/planet-earth.svg" alt="Earth"> -->
         <br>
-        <h1 class="textAnimation">
-            SpaceX
-        </h1>
-        <h2 class="textAnimation">
-            A page made for my second js assignment using API's!
-        </h2>
-        <div class="buttondiv">
-            <button class="textAnimation" id="scrollToStart">
-                Click here to start looking
-            </button>
+        <div class="headertext">
+            <h1 class="textAnimation">
+                SpaceX
+            </h1>
+            <h2 class="textAnimation">
+                A page made for my second js assignment using API's!
+            </h2>
         </div>
+        <button class="textAnimation" id="scrollToStart">
+            Click here to start looking
+        </button>
     </header>
     <nav id="nav">
-        <button id="DESC">Order by Descending</button>
     </nav>
+    <div id="filters" class="filteroptions">
+        <div class="filterbox">
+            <label for="DESC">Order by latest launch</label>
+            <input name="DESC" type="checkbox" id="DESC"></input>
+            <label for="ASC">Order by oldest launch</label>
+            <input name="ASC" type="checkbox" id="ASC"></input>
+        </div>
+        <div class="filterbox">
+            <button id="falc1">Filter by Falcon 1</button>
+            <button id="falc9">Filter by Falcon 9</button>
+            <button id="falchvy">Filter by Falcon Heavy</button>
+            <button id="all">See all rockets</button>
+        </div>
+    </div>
     <div id="data">
 
     </div>
     <script src="js/main.js"></script>
-    <div>Icons made by
-        <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
-        <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
-        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    <div style="display:flex; align-items:center; justify-content:center;">
+        <p>
+            Icons made by
+            <a href="http://www.freepik.com" title="Freepik"> Freepik </a> from
+            <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a> is licensed by
+            <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"> CC 3.0 BY </a>
+        </p>
     </div>
 </body>
 
