@@ -5,7 +5,8 @@ const orderRockFalc1 = document.getElementById("falc1");
 const orderRockFalc9 = document.getElementById("falc9");
 const orderRockFalcHvy = document.getElementById("falchvy");
 const orderAllRock = document.getElementById("all");
-const returnToMain = document.getElementById("returnToMain");
+const returnbuttons = document.getElementsByClassName("returnbuttons");
+const infoBoxes = document.getElementsByClassName("box");
 let globalLaunchData = [];
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
@@ -58,7 +59,6 @@ function loopLaunchData(launchData) {
         </div>
         `;
         // Adds eventlistner to all boxes containing the info aswell as all the innerHTML that replaces the old one to write more information
-        const infoBoxes = document.getElementsByClassName("box");
         for (let infoBox of infoBoxes) {
             infoBox.addEventListener("click", function () {
                 for (var i = 0; i < globalLaunchData.length; i++) {
@@ -84,9 +84,15 @@ function loopLaunchData(launchData) {
                             </ul>
                             <p>${launchData[i].details}</p>
                             <iframe width="420" height="345" src="${embedVid}"></iframe>
-                            <button id="returnToMain">Return to main page</button>
+                            <button class="returnbuttons">Return to main page</button>
                             </div>
                     `
+                        for (let returnbutton of returnbuttons) {
+                            returnbutton.addEventListener("click", function () {
+                                const allRock = "rocket_id=&"
+                                getLaunches(allRock);
+                            });
+                        }
                     }
                     else {
                         console.log("Fan");
