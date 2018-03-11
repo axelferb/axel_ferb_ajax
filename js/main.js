@@ -56,6 +56,7 @@ function loopLaunchData(launchData) {
         <li>Launch successful: ${launchData[i].launch_success}</li>
         </ul>
         <p>${launchData[i].details}</p>
+        <p class="bottom">Click to read more</p>
         </div>
         `;
         // Adds eventlistner to all boxes containing the info aswell as all the innerHTML that replaces the old one to write more information
@@ -83,7 +84,7 @@ function loopLaunchData(launchData) {
                             <li>Launchsite: ${launchData[i].launch_site.site_name_long}</li>
                             </ul>
                             <p>${launchData[i].details}</p>
-                            <iframe width="420" height="345" src="${embedVid}"></iframe>
+                            <iframe class="vidPlayer" src="${embedVid}"></iframe>
                             <button class="returnbuttons">Return to main page</button>
                             </div>
                     `
