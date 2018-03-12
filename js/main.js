@@ -33,7 +33,7 @@ function loopLaunchData(localData) {
 	// Code for replacing returnvalues of null/true/false with actual text
 	for (var i = 0; i < localData.length; i++) {
 
-		if (localStorage.getItem.localData[i].details === null) {
+		if (localData[i].details === null) {
 			localData[i].details = "No extra information avalible about this launch.";
 		}
 
