@@ -7,23 +7,33 @@ const orderRockFalcHvy = document.getElementById("falchvy");
 const orderAllRock = document.getElementById("all");
 const returnbuttons = document.getElementsByClassName("returnbuttons");
 const infoBoxes = document.getElementsByClassName("box");
+var lastclear = localStorage.getItem("lastclear");
+var time_now = (new Date()).getTime();
 let globalLaunchData = [];
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
 function getLaunches(launches) {
-	fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
-		.then(function (response) {
-			return response.json();
-		})
-		.then(function (launchData) {
-			localStorage.setItem("fetchData", JSON.stringify(launchData));
-			var localData = JSON.parse(localStorage.getItem("fetchData"));
-			globalLaunchData = localData;
-			loopLaunchData(localData);
-		})
-		.catch(function (error) {
-			console.log(error);
-		})
+	if (localStorage.getItem("fetchData") === null || (time_now - lastclear) > (1000 * 60 * 60)) {
+		fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (launchData) {
+				localStorage.setItem("fetchData", JSON.stringify(launchData));
+				var localData = JSON.parse(localStorage.getItem("fetchData"));
+				globalLaunchData = localData;
+				localStorage.setItem('lastclear', time_now);
+				loopLaunchData(localData);
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+	}
+	else {
+		var localData = JSON.parse(localStorage.getItem("fetchData"));
+		globalLaunchData = localData;
+		loopLaunchData(localData);
+	}
 };
 
 // Looping out all the launches //
@@ -158,5 +168,17 @@ scrollButton.addEventListener("click", function () {
 	document.getElementById("filters").scrollIntoView();
 });
 //
+// function timeDate() {
 
+// 	var lastclear = localStorage.getItem("lastclear"),
+// 		time_now = (new Date()).getTime();
+
+// 	// .getTime() returns milliseconds so 1000 * 60 * 60 * 24 = 24 days
+// 	if ((time_now - lastclear) > (1000 * 60 * 60)) {
+// 		localStorage.setItem('lastclear', time_now);
+
+// 		localStorage.clear();
+// 		console.log("clear");
+// 	}
+// }
 getLaunches();
