@@ -7,23 +7,26 @@ const orderRockFalcHvy = document.getElementById("falchvy");
 const orderAllRock = document.getElementById("all");
 const returnbuttons = document.getElementsByClassName("returnbuttons");
 const infoBoxes = document.getElementsByClassName("box");
-var lastclear = localStorage.getItem("lastclear");
+var lastsave = localStorage.getItem("lastsave");
 var time_now = (new Date()).getTime();
 let globalLaunchData = [];
 
 // Fetches all the data in the API aswell as running the functions needed to write them out //
 function getLaunches(launches) {
-	if (localStorage.getItem("fetchData") === null || (time_now - lastclear) > (1000 * 60 * 60)) {
+	// Checks if localstorage is empty aswell as when it was last updated, if it was updated more than 30 minutes ago, update it again!
+	if (localStorage.getItem("fetchData") === null || (time_now - lastsave) > (1000 * 60 * 30)) {
 		fetch(`https://api.spacexdata.com/v2/launches?${launches}`)
 			.then(function (response) {
 				return response.json();
 			})
 			.then(function (launchData) {
+				localStorage.clear();
 				localStorage.setItem("fetchData", JSON.stringify(launchData));
 				var localData = JSON.parse(localStorage.getItem("fetchData"));
 				globalLaunchData = localData;
-				localStorage.setItem('lastclear', time_now);
+				localStorage.setItem('lastsave', time_now);
 				loopLaunchData(localData);
+				hideLoadBar();
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -33,6 +36,7 @@ function getLaunches(launches) {
 		var localData = JSON.parse(localStorage.getItem("fetchData"));
 		globalLaunchData = localData;
 		loopLaunchData(localData);
+		hideLoadBar();
 	}
 };
 
@@ -118,6 +122,7 @@ function loopLaunchData(localData) {
 // Filter by Descending //
 orderDesc.addEventListener("click", function () {
 	if (orderDesc.checked) {
+		localStorage.clear();
 		const descending = "order=desc&";
 		orderAsc.checked = !orderDesc.checked;
 		getLaunches(descending);
@@ -127,6 +132,7 @@ orderDesc.addEventListener("click", function () {
 // Filter by Ascending //
 orderAsc.addEventListener("click", function () {
 	if (orderAsc.checked) {
+		localStorage.clear();
 		const ascending = "order=asc&";
 		orderDesc.checked = !orderAsc.checked;
 		getLaunches(ascending);
@@ -135,6 +141,7 @@ orderAsc.addEventListener("click", function () {
 
 // Filter by rocket falcon 1 //
 orderRockFalc1.addEventListener("click", function () {
+	localStorage.clear();
 	const rocketfalc1 = "rocket_id=falcon1&"
 	getLaunches(rocketfalc1);
 	content.innerHTML = ""
@@ -142,6 +149,7 @@ orderRockFalc1.addEventListener("click", function () {
 
 // Filter by rocket falcon 9 //
 orderRockFalc9.addEventListener("click", function () {
+	localStorage.clear();
 	const rocketfalc9 = "rocket_id=falcon9&"
 	getLaunches(rocketfalc9);
 	content.innerHTML = ""
@@ -149,12 +157,14 @@ orderRockFalc9.addEventListener("click", function () {
 
 // Filter by rocket falcon heavy //
 orderRockFalcHvy.addEventListener("click", function () {
+	localStorage.clear();
 	const rocketfalchvy = "rocket_id=falconheavy&"
 	getLaunches(rocketfalchvy);
 	content.innerHTML = ""
 });
 // Filter by all rockets //
 orderAllRock.addEventListener("click", function () {
+	localStorage.clear();
 	const allRock = "rocket_id=&"
 	getLaunches(allRock);
 	content.innerHTML = ""
@@ -166,19 +176,27 @@ scrollButton = document.getElementById("scrollToStart");
 
 scrollButton.addEventListener("click", function () {
 	document.getElementById("filters").scrollIntoView();
-});
+})
+	;
 //
-// function timeDate() {
 
-// 	var lastclear = localStorage.getItem("lastclear"),
-// 		time_now = (new Date()).getTime();
+// Loadingbar code //
 
-// 	// .getTime() returns milliseconds so 1000 * 60 * 60 * 24 = 24 days
-// 	if ((time_now - lastclear) > (1000 * 60 * 60)) {
-// 		localStorage.setItem('lastclear', time_now);
+function hide() {
+	document.getElementById("spinner").style.display = "none";
+}
 
-// 		localStorage.clear();
-// 		console.log("clear");
-// 	}
+function hideLoadBar() {
+	setTimeout("hide()", 1000 * 1);
+}
+//
+
+// function doHide() {
+// 	document.getElementById("imgToHide").style.display = "none";
+// }
+
+// function hideImage() {
+// 	//  5000 = 5 seconds
+// 	setTimeout("doHide()", 5000);
 // }
 getLaunches();
