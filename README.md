@@ -1,5 +1,5 @@
 # `Javascript & API`
-Axel Ferb | [Link to webpage](http://axelferb.se/spacex/), [Github Repository](https://github.com/axelferb/axel_ferb_ajax) and [github pages](https://axelferb.github.io/axel_ferb_ajax/)
+Axel Ferb | [Link to webpage](http://axelferb.se/spacex/), [Github repository](https://github.com/axelferb/axel_ferb_ajax) and [Github pages](https://axelferb.github.io/axel_ferb_ajax/)
 
 ## `About`
 Website that lists all launches made by spaceX aswell as giving you a basic overview aswell as the ability to get further statistics about additional launches.
