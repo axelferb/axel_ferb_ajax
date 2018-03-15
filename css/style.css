@@ -271,7 +271,7 @@ p, li, label, button  {
 
 /* iPad */
 
-@media screen and (max-width: 812px) {
+@media screen and (max-width: 1024px) {
     #data {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -284,6 +284,23 @@ p, li, label, button  {
         padding-top: 30px;
         padding-bottom: 60px;
         text-align: center;
+    }
+
+    .returnbuttonDiv {
+        text-align: center;
+    }
+
+    .returnbuttons {
+        position: relative;
+        margin: 0px;
+        background-color: #cc3939;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+        border-style: none;
+        padding: 5px;
+        font-size: 1.5em;
+        cursor: pointer;
     }
 
     .bigbox {
@@ -328,6 +345,23 @@ p, li, label, button  {
     .vidplayerDiv {
         padding-top: 30px;
         padding-bottom: 80px;
+        text-align: center;
+    }
+
+    .returnbuttons {
+        position: relative;
+        margin: 0px;
+        background-color: #cc3939;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+        border-style: none;
+        padding: 5px;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .returnbuttonDiv {
         text-align: center;
     }
 
