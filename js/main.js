@@ -102,7 +102,9 @@ function loopLaunchData(localData) {
 							<div class="vidplayerDiv">
 							<iframe class="vidPlayer" src="${embedVid}"></iframe>
 							</div>
-                            <button class="returnbuttons">Return to main page</button>
+							<div class="returnbuttonDiv">
+							<button class="returnbuttons">Return to main page</button>
+							</div>
                             </div>
                             `
 						for (let returnbutton of returnbuttons) {
