@@ -98,8 +98,10 @@ function loopLaunchData(localData) {
                             <li>Launch successful: ${localData[i].launch_success}</li>
                             <li>Launchsite: ${localData[i].launch_site.site_name_long}</li>
                             </ul>
-                            <p>${localData[i].details}</p>
-                            <iframe class="vidPlayer" src="${embedVid}"></iframe>
+							<p>${localData[i].details}</p>
+							<div class="vidplayerDiv">
+							<iframe class="vidPlayer" src="${embedVid}"></iframe>
+							</div>
                             <button class="returnbuttons">Return to main page</button>
                             </div>
                             `
@@ -112,6 +114,7 @@ function loopLaunchData(localData) {
 						}
 					}
 				}
+				document.getElementById("bigbox").scrollIntoView();
 			});
 		}
 	}
@@ -189,14 +192,4 @@ function hide() {
 function hideLoadBar() {
 	setTimeout("hide()", 1000 * 1);
 }
-//
-
-// function doHide() {
-// 	document.getElementById("imgToHide").style.display = "none";
-// }
-
-// function hideImage() {
-// 	//  5000 = 5 seconds
-// 	setTimeout("doHide()", 5000);
-// }
 getLaunches();
