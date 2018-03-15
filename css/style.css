@@ -160,7 +160,6 @@ header {
 }
 
 .bigbox {
-    height: 100vh;
     width: calc(100vw - 40px);
     box-sizing: border-box;
     padding: 15px;
@@ -261,6 +260,7 @@ p, li, label, button  {
 
 .vidplayerDiv {
     padding-top: 30px;
+    padding-bottom: 30px;
     text-align: center;
 }
 
@@ -271,7 +271,7 @@ p, li, label, button  {
 
 /* iPad */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 812px) {
     #data {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -280,13 +280,23 @@ p, li, label, button  {
         grid-column-gap: 10px;
     }
 
+    .vidplayerDiv {
+        padding-top: 30px;
+        padding-bottom: 60px;
+        text-align: center;
+    }
+
     .bigbox {
         height: 100%;
-        width: calc(100vw - 20px);
+        width: calc(100vw - 40px);
         box-sizing: border-box;
-        border: 3px solid black;
-        padding: 5px;
-        color: black;
+        padding: 15px;
+        border-radius: 15px;
+        color: white;
+        position: relative;
+        min-height: 350px;
+        border-radius: 15px;
+        background-color: #7F7E7E;
     }
 }
 
@@ -312,16 +322,25 @@ p, li, label, button  {
 
     .vidPlayer {
         width: 100%;
-        height: auto;
+        min-height: 305px;
+    }
+
+    .vidplayerDiv {
+        padding-top: 30px;
+        padding-bottom: 80px;
+        text-align: center;
     }
 
     .bigbox {
-        height: 100%;
-        width: 100vw;
+        width: calc(100vw - 40px);
         box-sizing: border-box;
-        border: 3px solid black;
-        padding: 5px;
-        color: black;
+        padding: 15px;
+        border-radius: 15px;
+        color: white;
+        position: relative;
+        min-height: 350px;
+        border-radius: 15px;
+        background-color: #7F7E7E;
     }
 
     .headertext {
